@@ -2,7 +2,6 @@ package personajes;
 
 public class Soldado extends Personaje {
     public Soldado() {
-        super();
         coste = 10;
         ataque = 10;
         defensa = 10;
@@ -11,12 +10,16 @@ public class Soldado extends Personaje {
     }
 
     @Override
-    public void info () {
-        System.out.println("Soldado");
-        System.out.println(coste);
-        System.out.println(ataque);
-        System.out.println(defensa);
-        System.out.println(vida);
-        System.out.println(radio);
+    public int getCoste() {
+        return this.coste;
+    }
+    public int getAtaque (){
+        return this.ataque;
+    }
+
+    @Override
+    public String toString () {
+        return "\nEl personaje tiene\nCoste: " + coste +"\nAtaque: "+ ataque +
+                "\nDefensa: " + defensa + "\nVida: " + vida + "\nRadio: " + radio;
     }
 }

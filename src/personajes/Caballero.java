@@ -2,7 +2,6 @@ package personajes;
 
 public class Caballero extends Personaje{
     public Caballero() {
-        super();
         coste = 5;
         ataque = 5;
         defensa = 5;
@@ -11,12 +10,8 @@ public class Caballero extends Personaje{
     }
 
     @Override
-    public void info () {
-        System.out.println("Lancero");
-        System.out.println(coste);
-        System.out.println(ataque);
-        System.out.println(defensa);
-        System.out.println(vida);
-        System.out.println(radio);
+    public String toString () {
+        return "\nEl personaje tiene\nCoste: " + coste +"\nAtaque: "+ ataque +
+                "\nDefensa: " + defensa + "\nVida: " + vida + "\nRadio: " + radio;
     }
 }

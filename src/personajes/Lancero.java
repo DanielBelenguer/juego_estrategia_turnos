@@ -11,12 +11,8 @@ public class Lancero extends Personaje{
     }
 
     @Override
-    public void info () {
-        System.out.println("Lancero");
-        System.out.println(coste);
-        System.out.println(ataque);
-        System.out.println(defensa);
-        System.out.println(vida);
-        System.out.println(radio);
+    public String toString () {
+        return "\nEl personaje tiene\nCoste: " + coste +"\nAtaque: "+ ataque +
+                "\nDefensa: " + defensa + "\nVida: " + vida + "\nRadio: " + radio;
     }
 }

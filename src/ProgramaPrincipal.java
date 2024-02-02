@@ -11,7 +11,9 @@ public class ProgramaPrincipal {
 
     //creamos el tablero
         Tablero mapa = new Tablero();
-
+        Personaje p1 = new Soldado();
+        System.out.println(p1.toString());
+        /*
     do {
         System.out.println("""
                 Que personaje quieres cear:
@@ -41,7 +43,7 @@ public class ProgramaPrincipal {
         }
 
     }while (sumacoste==50);
-
+*/
 
 
 

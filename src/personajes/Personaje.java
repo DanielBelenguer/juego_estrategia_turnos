@@ -22,4 +22,8 @@ public class Personaje {
         System.out.println(vida);
         System.out.println(radio);
     }
+
+    public int getCoste() {
+        return coste;
+    }
 }

@@ -5,6 +5,7 @@ import personajes.*;
 public class Tablero {
     Personaje[][] tablero = new Personaje[8][8];
 
+
     public void mostrarTablero (){
 
         System.out.print("       ");  //ocupamos el espacio en blanco de la izquierda
@@ -26,5 +27,10 @@ public class Tablero {
             }
             System.out.println();
         }
+    }
+
+    public void setpersonajestablero (Personaje personaje,int x,int y) {
+            tablero[x][y] = personaje;
+            mostrarTablero();
     }
 }

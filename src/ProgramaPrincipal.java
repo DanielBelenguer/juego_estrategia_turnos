@@ -13,8 +13,10 @@ public class ProgramaPrincipal {
        //
        // creamos el tablero
        Tablero mapa = new Tablero();
+
+       // Creacion de los ejercitos
        crearEjercito(ejerAzul);
-       System.out.println(ejerAzul[2]);
+       crearEjercito(ejerRojo);
 
    }
    static void crearEjercito(Personaje [] listapers){
@@ -22,38 +24,31 @@ public class ProgramaPrincipal {
         Scanner lector = new Scanner(System.in);
 
        while (costeTotal < 50) {
-            System.out.println("""
-                    Tienes un total de 50 puntos para gastar. \n 
-                    1 - Soldado (10)\n
-                    2 - Caballero (25)\n
-                    3 - Arquero (5)\n
-                    4 - Lancero (19)\n
-                    elije tus personajes:\n
-                    """);
+           System.out.println("Tienes un total de " + costeTotal + " de puntos por gastar.\n" +
+           "1 - Soldado " + listapers[posicion].getCoste() + "2 - Caballero " + listapers[posicion].getCoste()
+           + "3 - Arquero " + listapers[posicion].getCoste() + "4 - Lancero " + listapers[posicion].getCoste() +
+           "Elige personaje para crear ");
+
             opt=lector.nextInt();
             switch (opt){
                 case 1:
-                    Soldado sol = new Soldado();
-                    listapers[posicion] = sol;
-                    costeTotal += sol.getCoste();
+                    listapers[posicion] = new Soldado();
+                    costeTotal += listapers[posicion].getCoste();
                     posicion++;
                     break;
                 case 2:
-                    Caballero cab = new Caballero();
-                    listapers[posicion] = cab;
-                    costeTotal += cab.getCoste();
+                    listapers[posicion] = new Caballero();
+                    costeTotal += listapers[posicion].getCoste();
                     posicion++;
                     break;
                 case 3:
-                    Arquero arq = new Arquero();
-                    costeTotal += arq.getCoste();
-                    listapers[posicion] = arq;
+                    listapers[posicion] = new Arquero();
+                    costeTotal += listapers[posicion].getCoste();
                     posicion++;
                     break;
                 case 4:
-                    Lancero lan = new Lancero();
-                    costeTotal += lan.getCoste();
-                    listapers[posicion] = lan;
+                    listapers[posicion] = new Lancero();
+                    costeTotal += listapers[posicion].getCoste();
                     posicion++;
                     break;
                 default:

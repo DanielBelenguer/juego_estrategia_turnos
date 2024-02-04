@@ -1,69 +1,70 @@
 import personajes.*;
 import tablero.Tablero;
-
 import java.lang.*;
 import java.util.Scanner;
-
+import java.util.Arrays;
 public class ProgramaPrincipal {
-    public static void main(String[] args) {
-    Scanner lector = new Scanner(System.in);
-    int sumacoste=0,opt;
+   public static void main(String[] args) {
+       Scanner lector = new Scanner(System.in);
+       //Declaracion de variables
+       int sumacoste=0,opt;
+       Personaje [] ejerAzul = new Personaje[1];
+       Personaje [] ejerRojo = new Personaje[1];
+       //
+       // creamos el tablero
+       Tablero mapa = new Tablero();
+       crearEjercito(ejerAzul);
+       System.out.println(ejerAzul[2]);
 
-    //creamos el tablero
-        Tablero mapa = new Tablero();
-        Personaje p1 = new Soldado();
-        System.out.println(p1.toString());
-        /*
-    do {
-        System.out.println("""
-                Que personaje quieres cear:
-                1 - Soldado
-                2 - Lancero
-                3 - Caballero
-                4 - Arquero
-                """);
-        opt= lector.nextInt();
+   }
+   static void crearEjercito(Personaje [] listapers){
+        int costeTotal=0,posicion=0,opt;
+        Scanner lector = new Scanner(System.in);
 
-        switch (opt) {
-            case 1:
-                Personaje personaje = new Soldado();
-                //mapa.setpersonajestablero();
-                sumacoste+=personaje.getCoste();
-                break;
-            case 2:
+       while (costeTotal < 50) {
+            System.out.println("""
+                    Tienes un total de 50 puntos para gastar. \n 
+                    1 - Soldado (10)\n
+                    2 - Caballero (25)\n
+                    3 - Arquero (5)\n
+                    4 - Lancero (19)\n
+                    elije tus personajes:\n
+                    """);
+            opt=lector.nextInt();
+            switch (opt){
+                case 1:
+                    Soldado sol = new Soldado();
+                    listapers[posicion] = sol;
+                    costeTotal += sol.getCoste();
+                    posicion++;
+                    break;
+                case 2:
+                    Caballero cab = new Caballero();
+                    listapers[posicion] = cab;
+                    costeTotal += cab.getCoste();
+                    posicion++;
+                    break;
+                case 3:
+                    Arquero arq = new Arquero();
+                    costeTotal += arq.getCoste();
+                    listapers[posicion] = arq;
+                    posicion++;
+                    break;
+                case 4:
+                    Lancero lan = new Lancero();
+                    costeTotal += lan.getCoste();
+                    listapers[posicion] = lan;
+                    posicion++;
+                    break;
+                default:
+                    System.out.println("Introduce opcion valida.");
+            }
+            if (costeTotal < 50) {
+                //Crea una copia con longitud + 1 y la asigna a la variable array
+                listapers = Arrays.copyOf(listapers, listapers.length+1);
+                listapers[listapers.length-1] = null;
+            }
 
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-
-        }
-
-    }while (sumacoste==50);
-*/
-
-
-
-
-
-       /* Tablero tablero = new Tablero();
-        tablero.mostrarTablero();*/
-
-
-        /*Personaje sol1 = new Soldado();
-        sol1.info();
-        System.out.println("_____________________");
-        Personaje lan1 = new Lancero();
-        lan1.info();
-        System.out.println("_____________________");
-        Personaje cab1 = new Caballero();
-        cab1.info();
-        System.out.println("_____________________");
-        Personaje arq1 = new Arquero();
-        arq1.info();
-        System.out.println("_____________________");*/
-    }
+       }
+   }
 }

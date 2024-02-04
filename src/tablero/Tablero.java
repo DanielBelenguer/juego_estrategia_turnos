@@ -33,4 +33,6 @@ public class Tablero {
             tablero[x][y] = personaje;
             mostrarTablero();
     }
-}
+
+    }
+

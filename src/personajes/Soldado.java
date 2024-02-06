@@ -6,21 +6,14 @@ public class Soldado extends Personaje {
     }
     @Override
     public String toString () {
-        return "\nEl personaje tiene\nCoste: " + coste +"\nAtaque: "+ ataque +
-                "\nDefensa: " + defensa + "\nVida: " + vida + "\nRadio: " + radio;
+        return "Soldado\n - Ataque: " + ataque + "\n - Defensa: " + defensa + "\n - Vida: " + vida + "\n - Radio de ataque: " + radio;
     }
     @Override
-    protected void atacar(){
-
-    }
+    protected void atacar(){}
     @Override
-    protected void mover(){
-
-    }
+    protected void mover(){}
     @Override
-    protected void curar(){
-
-    }
+    protected void curar(){}
     public int getCoste() {
         return coste;
     }

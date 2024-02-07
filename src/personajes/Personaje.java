@@ -10,7 +10,7 @@ public abstract class Personaje {
     abstract public  int getDefensa();
     abstract public int getVida();
     abstract public int getRadio();
-
+    abstract public String getInfoMapa();
     protected abstract void atacar ();
     protected abstract void mover ();
     protected abstract void curar ();

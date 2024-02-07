@@ -27,4 +27,8 @@ public class Caballero extends Personaje{
     public int getRadio(){
         return radio;
     }
+    @Override
+    public  String  getInfoMapa(){
+        return "S" + "(" + vida + ")";
+    }
 }

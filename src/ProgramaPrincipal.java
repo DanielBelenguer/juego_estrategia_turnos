@@ -4,7 +4,7 @@ import java.lang.*;
 import java.util.Scanner;
 import java.util.Arrays;
 public class ProgramaPrincipal {
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         //Declaracion de variables
         Personaje [] ejerAzul = new Personaje[1];
@@ -14,10 +14,10 @@ public class ProgramaPrincipal {
         // Creamos ejercito Azul
         int sumacoste=0,contador=0;
         while (sumacoste < 50) {
-            System.out.println("""
-                    Tienes 50 puntos para gastar
-                    1-Soldado 10 puntos, 2-Caballero 25, 3-Arquero 15,4-Lancero 5
-                    Seleccione personajes: """);
+
+            System.out.println("Tienes un total de 50 puntos y llevas gastados:" + " " + sumacoste + " " +
+                "\nElige personaje para crear:" + "\n1 - Soldado 10 puntos\n2 - Caballero  25 puntos\n3 - Arquero 15 puntos\n4 - Lancero 5 puntos");
+
             ejerAzul[contador] = mapa.crearEjercito(lector.nextInt());
             sumacoste+=ejerAzul[contador].getCoste();
             contador++;
@@ -27,10 +27,26 @@ public class ProgramaPrincipal {
                 ejerAzul[ejerAzul.length-1] = null;
             }
         }
-        // Creamos ejercito Rojo
+        //Elección de posiciones jugador Azul
+        mapa.mostrarTablero();
+        System.out.println();
+        System.out.println("Jugador azul elije tus posiciones (columna 6 y 7)");
+        for (int i = 0; i < ejerAzul.length;) {
+            System.out.println("Elija Fila y columna");
+            if (mapa.setpersonajeMapaAzul(ejerAzul[i], lector.nextInt(), lector.nextInt())==true){
+                i++;
+            }
+        }
+        System.out.println("Esta es tu elección: ");
+        mapa.mostrarTablero();
+
+
+        // Creamos ejército Rojo
         sumacoste=0;contador=0;
         while (sumacoste < 50) {
-            System.out.println("Elije un personaje: ");
+            System.out.println("Tienes un total de 50 puntos y llevas gastados:" + " " + sumacoste + " " +
+                    "\nElige personaje para crear:" + "\n1 - Soldado 10 puntos\n2 - Caballero  25 puntos\n3 - Arquero 15 puntos\n4 - Lancero 5 puntos");
+
             ejerRojo[contador] = mapa.crearEjercito(lector.nextInt());
             sumacoste+=ejerRojo[contador].getCoste();
             contador++;
@@ -41,13 +57,17 @@ public class ProgramaPrincipal {
                 ejerRojo[ejerRojo.length-1] = null;
             }
         }
-        for (Personaje per: ejerAzul){
-            System.out.println(per);
+        // Eleccion de posiciones jugador Rojo
+        mapa.mostrarTablero();
+        System.out.println();
+        System.out.println("Jugador rojo elija tus posiciones (columna 0 y 1)");
+        for (int i = 0; i < ejerRojo.length;) {
+            System.out.println("Elija Fila y columna");
+            if (mapa.setpersonajeMapaRojo(ejerRojo[i], lector.nextInt(), lector.nextInt())==true){
+                i++;
+            }
         }
-        for (Personaje per :ejerRojo){
-            System.out.println(per);
-        }
-
-   }
-
+        System.out.println("Esta es su elección: ");
+        mapa.mostrarTablero();
+    }
 }

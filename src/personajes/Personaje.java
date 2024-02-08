@@ -11,9 +11,9 @@ public abstract class Personaje {
     abstract public int getVida();
     abstract public int getRadio();
     abstract public String getInfoMapa();
-    protected abstract void atacar ();
-    protected abstract void mover ();
-    protected abstract void curar ();
+    public abstract void atacar ();
+    public abstract void mover ();
+    public abstract void curar ();
     public abstract String toString ();
 
 }

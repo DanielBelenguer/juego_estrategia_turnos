@@ -9,11 +9,11 @@ public class Caballero extends Personaje{
         return "Caballero\n - Ataque: " + ataque + "\n - Defensa: " + defensa + "\n - Vida: " + vida + "\n - Radio de ataque: " + radio;
     }
     @Override
-    protected void atacar(){}
+    public void atacar(){}
     @Override
-    protected void mover(){}
+    public void mover(){}
     @Override
-    protected void curar(){}
+    public void curar(){}
     public int getCoste() { return coste;}
     public int getAtaque(){
         return ataque;
@@ -29,6 +29,6 @@ public class Caballero extends Personaje{
     }
     @Override
     public  String  getInfoMapa(){
-        return "S" + "(" + vida + ")";
+        return "C" + "(" + vida + ")";
     }
 }

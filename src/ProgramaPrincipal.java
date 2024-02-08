@@ -1,8 +1,9 @@
 import personajes.*;
 import tablero.Tablero;
 import java.lang.*;
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
+
 public class ProgramaPrincipal {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
@@ -12,6 +13,7 @@ public class ProgramaPrincipal {
         // creamos el tablero
         Tablero mapa = new Tablero();
         // Creamos ejercito Azul
+
         int sumacoste=0,contador=0;
         while (sumacoste < 50) {
 
@@ -27,7 +29,7 @@ public class ProgramaPrincipal {
                 ejerAzul[ejerAzul.length-1] = null;
             }
         }
-        //Elección de posiciones jugador Azul
+        //Elección de posiciones jugador Azul             !!!!INSERTARLO EN BUCLE DE CREACION!!!!!!!
         mapa.mostrarTablero();
         System.out.println();
         System.out.println("Jugador azul elije tus posiciones (columna 6 y 7)");
@@ -69,5 +71,52 @@ public class ProgramaPrincipal {
         }
         System.out.println("Esta es su elección: ");
         mapa.mostrarTablero();
+
+        // Sistema de turnos
+        boolean siono=true;
+        ejerAzul[0] = new Soldado();
+        ejerRojo[0] = new Soldado();
+        // Fin de bucle restando el conste del Personaje a sumaTotal (50)
+        while (true){
+
+            if (siono){
+                System.out.println("Turno de equipo Azul\n Elija una accion: \n 1 - Mover \n 2 - Atacar \n 3 - Curar \n ----------------------------");
+                int opt = lector.nextInt();
+                System.out.println("Que personaje quiere realizar la accion: ");
+                int personajete = lector.nextInt();
+                menuAccion(ejerAzul,opt,personajete-1);
+                System.out.println("Turno finalizado");
+                siono=false;
+
+            }else {
+                System.out.println("Turno de equipo Rojo\n Elija una accion: \n 1 - Mover \n 2 - Atacar \n 3 - Curar \n ----------------------------");
+                int opt = lector.nextInt();
+                System.out.println("Que personaje quiere realizar la accion: ");
+                int personajete = lector.nextInt();
+                menuAccion(ejerRojo,opt,personajete-1);
+                System.out.println("Turno finalizado");
+                siono=true;
+            }
+
+            // Comprobar ejerAzul ejerRojo para salir del while
+            //
+            //
+            //
+        }
+
+    }
+     static public void menuAccion(Personaje[] ejer,int opt,int perso){
+        switch (opt){
+            case 1:
+                ejer[perso].mover();
+                break;
+            case 2:
+                ejer[perso].atacar();
+                break;
+            case 3:
+                ejer[perso].curar();
+                break;
+            default:
+        }
     }
 }

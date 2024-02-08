@@ -6,7 +6,6 @@ import personajes.*;
 public class Tablero {
     Personaje[][] tablero = new Personaje[8][8];
 
-
     public void mostrarTablero (){
         System.out.print("       ");  //ocupamos el espacio en blanco de la izquierda
         for ( int i = 0; i < 8; i++) {
@@ -14,7 +13,7 @@ public class Tablero {
         }
         System.out.println();
         for ( int filas= 0; filas < tablero.length; filas++) {
-            System.out.print(filas+"  ");     //
+            System.out.print(filas+"  ");
             for ( int columnas = 0; columnas < tablero[filas].length; columnas++) {
                 if (tablero[filas][columnas]==null){
                     System.out.print("|       ");

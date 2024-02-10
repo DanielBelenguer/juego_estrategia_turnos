@@ -10,7 +10,6 @@ public class Ejercito {
     Personaje[] ejercito = new Personaje[1];
 
 
-
     public void crearEjercito (){
         Scanner lector = new Scanner(System.in);
         int sumacoste=0,contador=0,ejeFila,ejeColumna;
@@ -27,7 +26,6 @@ public class Ejercito {
                     System.out.println("Elija Columna: ");
                     ejeColumna = lector.nextInt();
                     Personaje sol = new Soldado(ejeFila,ejeColumna);
-
                     sumacoste+=sol.getCoste();
                     contador++;
                     break;

@@ -9,29 +9,34 @@ public class ProgramaPrincipal {
         Scanner lector = new Scanner(System.in);
         // creamos el tablero
         Tablero mapa = new Tablero();
-        Ejercito ejerAzul = new Ejercito();
-        Ejercito ejerRojo = new Ejercito();
+        //Ejercito ejerAzul = new Ejercito();
+        //Ejercito ejerRojo = new Ejercito();
 
-        ejerAzul.crearEjercito();
+        //ejerAzul.crearEjercito();
         //ejerRojo.crearEjercito();
+        //mapa.mostrarTablero();
 
-        mapa.mostrarTablero();
+
+
+
+
+
+
+
+
+
+
+
+        // Prueba de ataque
+        /* Personaje soldado1 = new Soldado(1,5);
+        Personaje soldado2 = new Soldado(5,1);
+
+        soldado1.atacar(soldado2);
+        System.out.println("Total de vida del personaje: " + soldado2.getVida());*/
+
 
 
 
     }
-     static public void menuAccion(Personaje[] ejer,int opt,int perso){
-        switch (opt){
-            case 1:
-                ejer[perso].mover();
-                break;
-            case 2:
-                ejer[perso].atacar();
-                break;
-            case 3:
-                ejer[perso].curar();
-                break;
-            default:
-        }
-    }
+
 }

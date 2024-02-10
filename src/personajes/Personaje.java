@@ -1,7 +1,7 @@
 package personajes;
 
 public abstract class Personaje {
-    protected int coste, ataque, defensa, vida, radio;
+    protected int coste, ataque, defensa, vida, radio,ejeFila, ejeColumna;
 
     protected Personaje (){}
 
@@ -10,6 +10,10 @@ public abstract class Personaje {
     abstract public  int getDefensa();
     abstract public int getVida();
     abstract public int getRadio();
+    abstract public int getEjeFila();
+    abstract public void setEjeFila(int ejeFila);
+    abstract public int getEjeColumna();
+    abstract public void setEjeColumna(int ejeColumna);
     abstract public String getInfoMapa();
     public abstract void atacar ();
     public abstract void mover ();

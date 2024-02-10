@@ -21,10 +21,22 @@ public class Arquero extends Personaje {
         perso.setVida(resultAtaque);
     }
     @Override
-    public void mover(){}
+    public void mover(int ejeFila, int ejerColumna){
+        setEjeFila(ejeFila);
+        setEjeColumna(ejeColumna);
+    }
     @Override
-    public void curar(){}
-
+    public void curar(){
+        int curacion;
+        Random random = new Random();
+        curacion = random.nextInt(0,10);
+        if (vida < 10){
+            vida+=curacion;
+        } else if (vida > 10) {
+            vida = 10;
+        }
+        System.out.println("Tu personaje se curo" + curacion + "\n Ahora tiene un total de vida: " + vida);
+    }
     public int getCoste() {
         return coste;
     }
@@ -75,7 +87,7 @@ public class Arquero extends Personaje {
         }
     }
     @Override
-    public  String  getInfoMapa(){
+    public  String getInfoPerso(){
         return "A" + "(" + vida + ")";
     }
 

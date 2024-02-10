@@ -21,9 +21,22 @@ public class Caballero extends Personaje{
         perso.setVida(resultAtaque);
     }
     @Override
-    public void mover(){}
+    public void mover(int ejeFila, int ejeColumna){
+        setEjeFila(ejeFila);
+        setEjeColumna(ejeColumna);
+    }
     @Override
-    public void curar(){}
+    public void curar(){
+        int curacion;
+        Random random = new Random();
+        curacion = random.nextInt(0,25);
+        if (vida < 10){
+            vida+=curacion;
+        } else if (vida > 10) {
+            vida = 10;
+        }
+        System.out.println("Tu personaje se curo" + curacion + "\n Ahora tiene un total de vida: " + vida);
+    }
     public int getCoste() { return coste;}
     public int getAtaque(){
         return ataque;
@@ -72,7 +85,7 @@ public class Caballero extends Personaje{
         }
     }
     @Override
-    public  String  getInfoMapa(){
+    public  String getInfoPerso(){
         return "C" + "(" + vida + ")";
     }
 }

@@ -9,12 +9,23 @@ public class ProgramaPrincipal {
         Scanner lector = new Scanner(System.in);
         // creamos el tablero
         Tablero mapa = new Tablero();
-        //Ejercito ejerAzul = new Ejercito();
+        Ejercito ejerAzul = new Ejercito();
+
+        mapa.mostrarTablero();
+        mapa.setPosicionTablero(ejerAzul.crearEjercito());
+        mapa.mostrarTablero();
+
+
+
+
+
+
         //Ejercito ejerRojo = new Ejercito();
 
         //ejerAzul.crearEjercito();
         //ejerRojo.crearEjercito();
         //mapa.mostrarTablero();
+
 
 
 

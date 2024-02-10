@@ -9,8 +9,12 @@ public class Ejercito {
     //Declaracion de variables
     Personaje[] ejercito = new Personaje[1];
 
+    public Personaje getPerso (){
+        return ejercito[0];
+    }
 
-    public void crearEjercito (){
+
+    public Personaje crearEjercito (){
         Scanner lector = new Scanner(System.in);
         int sumacoste=0,contador=0,ejeFila,ejeColumna;
         while (sumacoste < 50) {
@@ -28,7 +32,7 @@ public class Ejercito {
                     Personaje sol = new Soldado(ejeFila,ejeColumna);
                     sumacoste+=sol.getCoste();
                     contador++;
-                    break;
+                    return sol;
                 case 2:
                     System.out.println("Donde quieres colocar tu personaje: ");
                     System.out.println("Elija Fila: ");
@@ -38,7 +42,7 @@ public class Ejercito {
                     Personaje cab = new Caballero(ejeFila,ejeColumna);
                     sumacoste+=cab.getCoste();
                     contador++;
-                    break;
+                    return cab;
                 case 3:
                     System.out.println("Donde quieres colocar tu personaje: ");
                     System.out.println("Elija Fila: ");
@@ -48,7 +52,7 @@ public class Ejercito {
                     Personaje arq = new Arquero(ejeFila,ejeColumna);
                     sumacoste+=arq.getCoste();
                     contador++;
-                    break;
+                    return arq;
                 case 4:
                     System.out.println("Donde quieres colocar tu personaje: ");
                     System.out.println("Elija Fila: ");
@@ -58,7 +62,7 @@ public class Ejercito {
                     Personaje lan = new Lancero(ejeFila,ejeColumna);
                     sumacoste+=lan.getCoste();
                     contador++;
-                    break;
+                    return lan;
                 default:
                     System.out.println("Introduce opción válida.");
             }
@@ -68,5 +72,6 @@ public class Ejercito {
                 ejercito[ejercito.length-1] = null;
             }
         }
+        return null;
     }
 }

@@ -15,9 +15,9 @@ public abstract class Personaje {
     abstract public void setEjeFila(int ejeFila);
     abstract public int getEjeColumna();
     abstract public void setEjeColumna(int ejeColumna);
-    abstract public String getInfoMapa();
+    abstract public String getInfoPerso();
     public abstract void atacar (Personaje perso);
-    public abstract void mover ();
+    public abstract void mover (int ejeFila,int ejeColumna);
     public abstract void curar ();
     public abstract String toString ();
 

@@ -27,7 +27,17 @@ public class Soldado extends Personaje {
         setEjeColumna(ejeColumna);
     }
     @Override
-    public void curar(){}
+    public void curar(){
+        int curacion;
+        Random random = new Random();
+        curacion = random.nextInt(0,10);
+        if (vida < 10){
+            vida+=curacion;
+        } else if (vida > 10) {
+            vida = 10;
+        }
+        System.out.println("Tu personaje se curo" + curacion + "\n Ahora tiene un total de vida: " + vida);
+    }
     public int getCoste() {
         return coste;
     }
@@ -80,7 +90,7 @@ public class Soldado extends Personaje {
         }
     }
     @Override
-    public  String  getInfoMapa(){
+    public  String getInfoPerso(){
         return "S" + "(" + vida + ")";
     }
 }

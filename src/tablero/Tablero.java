@@ -19,34 +19,16 @@ public class Tablero {
                 if (tablero[filas][columnas]==null){
                     System.out.print("|       ");
                 }else {
-                    System.out.print("|" + tablero[filas][columnas].getInfoMapa() + "  ");
+                    System.out.print("|" + tablero[filas][columnas].getInfoPerso() + "  ");
                 }
             }
             System.out.println("|");
         }
     }
-    public void setPersoMapa (Personaje perso){
-        tablero[perso.getEjeFila()][perso.getEjeColumna()] = perso;
-    }
 
-    public boolean setpersonajeMapaRojo (Personaje perso,int fila,int columna){
-        if ((fila >= 0 && fila <=7 )&& (columna >=0 && columna <=7)){
-            if (tablero[fila][columna] == null){
-                if (columna == 0 || columna == 1){
-                    tablero[fila][columna] = perso;
-                    return true;
-                }else {
-                    System.out.println("La columna no es correcta, debes elegir la 0 o la 1");
-                    return false;
-                }
-            }else {
-                System.out.println("La posición elegida está ocupada");
-                return false;
-            }
-        }else {
-            System.out.println("Los valores introducidos no son correctos");
-            return false;
-        }
+    public Personaje setPosicionTablero (Personaje pers){
+        tablero[pers.getEjeFila()][pers.getEjeColumna()] = pers;
+        return pers;
     }
-
 }
+

@@ -3,8 +3,11 @@ package personajes;
 import tablero.Tablero;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Soldado extends Personaje {
+    //Boleano para el metodo mover
+     private boolean existePersonaje=false;
     public Soldado(int ejeFila, int ejeColumna) {
         coste = 10;ataque = 10;defensa = 10;vida = 10;radio = 1; this.ejeFila=ejeFila;this.ejeColumna=ejeColumna;
     }
@@ -22,9 +25,49 @@ public class Soldado extends Personaje {
         perso.setVida(resultAtaque);
     }
     @Override
-    public void mover(int ejeFila, int ejeColumna){
-        setEjeFila(ejeFila);
-        setEjeColumna(ejeColumna);
+    public void mover(Personaje[][] posiciones){
+        //setEjeFila(ejeFila);
+        //setEjeColumna(ejeColumna);
+        Scanner sc = new Scanner(System.in);
+
+        //en caso de que la posicion este ocupada volvemos a preguntar las posiciones
+        while (existePersonaje==true) {
+            System.out.println("Indique las coordenadas del personaje a mover, introduce la fila: ");
+            int filaOrigen = sc.nextInt();
+            System.out.println("Ahora indique la columna: ");
+            int columnaOrigen = sc.nextInt();
+            //recorremos el array posiciones para saber si la posicion esta libre
+            if (posiciones[filaOrigen][columnaOrigen]!=null){
+                System.out.println("Indique las nuevas coordenadas del personaje, introduce fila");
+                int filaNueva=sc.nextInt();
+                System.out.println("Ahora indique la columna");
+                int columnaNueva=sc.nextInt();
+                //recorremos el tablero para ver si la nueva posición está ocupada
+                for(int filaTablero=0;filaTablero<posiciones.length;filaTablero++){
+                    for(int columnaTablero=0;columnaTablero<posiciones.length;columnaTablero++){
+                        if(posiciones[filaNueva][columnaNueva]==null){
+                            posiciones[ejeFila][ejeColumna]=posiciones[filaNueva][columnaNueva];
+                            this.existePersonaje=true;
+                        }else {System.out.println("posicion ocupada");}
+                    }
+                }
+            }else {
+                System.out.println("no existe el personaje");
+            }
+
+
+            /*
+            for(int filaTablero = 0;filaTablero<posiciones.length;filaTablero++){
+                for(int columnaTablero = 0;columnaTablero<posiciones.length;columnaTablero++){
+                    if(posiciones[filaOrigen][columnaOrigen]!=null){
+                        this.existePersonaje = true;
+                    }else {
+                        System.out.println("no existe el personaje");
+                    }
+                }
+            }*/
+        }
+
     }
     @Override
     public void curar(){

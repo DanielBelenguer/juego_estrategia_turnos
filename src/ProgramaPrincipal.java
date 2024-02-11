@@ -8,45 +8,30 @@ public class ProgramaPrincipal {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         // creamos el tablero
-        Tablero mapa = new Tablero();
+        Tablero tablero = new Tablero();
         Ejercito ejerAzul = new Ejercito();
+        Ejercito ejerRojo = new Ejercito();
 
-        mapa.mostrarTablero();
-        mapa.setPosicionTablero(ejerAzul.crearEjercito());
-        mapa.mostrarTablero();
+        //Creamos ejercito azul
+        tablero.mostrarTablero();
+        System.out.println("Comienza el equipo azul creando su ejercito");
 
-
-
-
-
-
-        //Ejercito ejerRojo = new Ejercito();
-
-        //ejerAzul.crearEjercito();
-        //ejerRojo.crearEjercito();
-        //mapa.mostrarTablero();
+        tablero.actualizarTablero(ejerAzul.crearEjercito("azul"));
+        tablero.mostrarTablero();
+        int i=0,ii=7;
+        ejerAzul.getPerso().mover(tablero.posicionesTablero());
+        //tablero.actualizarTablero(ejerAzul.getPerso());
+        tablero.mostrarTablero();
 
 
 
 
 
+        //Creamos ejercito rojo
+        /*System.out.println("Ahora le toca al equipo rojo crear su ejercito");
 
-
-
-
-
-
-
-
-        // Prueba de ataque
-        /* Personaje soldado1 = new Soldado(1,5);
-        Personaje soldado2 = new Soldado(5,1);
-
-        soldado1.atacar(soldado2);
-        System.out.println("Total de vida del personaje: " + soldado2.getVida());*/
-
-
-
+        tablero.actualizarTablero(ejerRojo.crearEjercito("rojo"));
+        tablero.mostrarTablero();*/
 
     }
 

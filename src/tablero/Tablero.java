@@ -15,10 +15,11 @@ public class Tablero {
         System.out.println();
         for ( int filas= 0; filas < tablero.length; filas++) {
             System.out.print(filas+"  ");
-            for ( int columnas = 0; columnas < tablero[filas].length; columnas++) {
+            for ( int columnas = 0; columnas < tablero.length; columnas++) {
                 if (tablero[filas][columnas]==null){
                     System.out.print("|       ");
                 }else {
+
                     System.out.print("|" + tablero[filas][columnas].getInfoPerso() + "  ");
                 }
             }
@@ -26,9 +27,25 @@ public class Tablero {
         }
     }
 
-    public Personaje setPosicionTablero (Personaje pers){
+    public void actualizarTablero(Personaje[] ejercito){
+
+        for(int i=0;i<ejercito.length;i++){
+            int x = ejercito[i].getEjeFila();
+            int y = ejercito[i].getEjeColumna();
+            this.tablero[x][y] = ejercito[i];
+        }
+
+    }
+
+
+
+
+    //Mirar si se puede borrar
+    /*public Personaje setPosicionTablero (Personaje pers){
         tablero[pers.getEjeFila()][pers.getEjeColumna()] = pers;
         return pers;
-    }
+    }*/
+    public Personaje[][] posicionesTablero(){
+        return this.tablero;
 }
-
+}

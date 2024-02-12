@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Lancero extends Personaje{
     private boolean existePersonaje = false;
 
-    public Lancero(int ejeFila, int ejeColumna) {
-        coste = 5;ataque = 5;defensa = 5;vida = 10;radio = 2;this.ejeFila=ejeFila;this.ejeColumna=ejeColumna;
+    public Lancero() {
+        coste = 5;ataque = 5;defensa = 5;vida = 10;radio = 2;
     }
     @Override
     public String toString () {
@@ -24,43 +24,34 @@ public class Lancero extends Personaje{
         perso.setVida(resultAtaque);
     }
     @Override
-    public void mover(Personaje[][] posiciones){
+    public void mover(Personaje[][] posiciones) {
         //setEjeFila(ejeFila);
         //setEjeColumna(ejeColumna);
         Scanner sc = new Scanner(System.in);
 
         //en caso de que la posicion este ocupada volvemos a preguntar las posiciones
-        while (existePersonaje=true) {
+        while (existePersonaje == true) {
             System.out.println("Indique las coordenadas del personaje a mover, introduce la fila: ");
             int filaOrigen = sc.nextInt();
             System.out.println("Ahora indique la columna: ");
             int columnaOrigen = sc.nextInt();
-            //recorremos el array posiciones para saber si la posicion esta libre
-            for(int filaTablero = 0;filaTablero<posiciones.length;filaTablero++){
-                for(int columnaTablero = 0;columnaTablero<posiciones.length;columnaTablero++){
-                    if(posiciones[filaOrigen][columnaOrigen]!=null){
-                        this.existePersonaje = true;
-                    }else {
-                        System.out.println("no existe el personaje");
-                    }
-                }
-            }
-        }
-        //si la posición está ocupada, solicitamos los datos de las nuevas coordenadas y comprobamos que no esten ocupadas
-        while (existePersonaje==true){
-            System.out.println("Indique las nuevas coordenadas del personaje, introduce fila");
-            int filaNueva=sc.nextInt();
-            System.out.println("Ahora indique la columna");
-            int columnaNueva=sc.nextInt();
-            //recorremos el tablero para ver si la nueva posición está ocupada
-            for(int filaTablero=0;filaTablero<posiciones.length;filaTablero++){
-                for(int columnaTablero=0;columnaTablero<posiciones.length;columnaTablero++){
-                    if(posiciones[filaNueva][columnaNueva]==null){
-                        posiciones[ejeFila][ejeColumna]=posiciones[filaNueva][columnaNueva];
-                    }else {System.out.println("posicion ocupada");}
+            //Comprobamos que el personaje existe
+            if (posiciones[filaOrigen][columnaOrigen] != null) {
+                System.out.println("Indique las nuevas coordenadas del personaje, introduce fila");
+                int filaNueva = sc.nextInt();
+                System.out.println("Ahora indique la columna");
+                int columnaNueva = sc.nextInt();
+                //recorremos el tablero para ver si la nueva posición está ocupada
+
+                if (posiciones[filaNueva][columnaNueva] == null) {
+
+                    posiciones[filaOrigen][columnaOrigen] = posiciones[filaNueva][columnaNueva];
+                } else {
+                    System.out.println("La posicion está ocupada, por favor elija de nuevo posicion");
                 }
 
             }
+
         }
     }
     @Override
@@ -104,26 +95,7 @@ public class Lancero extends Personaje{
     public int getRadio(){
         return radio;
     }
-    @Override
-    public int getEjeFila() {
-        return ejeFila;
-    }
-    @Override
-    public void setEjeFila(int ejeFila) {
-        if (ejeFila >= 0 && ejeFila <=7 ){
-            this.ejeFila=ejeFila;
-        }
-    }
-    @Override
-    public int getEjeColumna() {
-        return ejeColumna;
-    }
-    @Override
-    public void setEjeColumna(int ejeColumna) {
-        if (ejeColumna >= 0 && ejeColumna <=7 ){
-            this.ejeColumna=ejeColumna;
-        }
-    }
+
     @Override
     public  String getInfoPerso(){
         return "L" + "(" + vida + ")";

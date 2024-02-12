@@ -27,13 +27,15 @@ public class Tablero {
         }
     }
 
-    public void actualizarTablero(Personaje[] ejercito){
+    public void actualizarTablero(){
 
-        for(int i=0;i<ejercito.length;i++){
-            int x = ejercito[i].getEjeFila();
-            int y = ejercito[i].getEjeColumna();
+
+
+        /*for(int i=0;i<ejercito.length;i++){
+            int x = ;
+            int y = ;
             this.tablero[x][y] = ejercito[i];
-        }
+        }*/
 
     }
 

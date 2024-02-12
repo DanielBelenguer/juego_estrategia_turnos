@@ -14,7 +14,7 @@ public class Ejercito {
     }
 
 
-    public Personaje[] crearEjercito (String color){
+    public Personaje[] crearEjercito (String color, Tablero tablero){
         Scanner lector = new Scanner(System.in);
         int sumacoste=0,ejeFila,ejeColumna;
         int minFila=0,maxFila=7,minColumna=10,maxColumna=236;
@@ -40,10 +40,11 @@ public class Ejercito {
 
                     //Comprobación de columna introducida es correcta
                     if (ejeFila >= minFila && ejeFila <= maxFila && ejeColumna >= minColumna && ejeColumna <= maxColumna){
-                        Personaje sol = new Soldado(ejeFila,ejeColumna);
+                        Personaje sol = new Soldado();
                         sumacoste+=sol.getCoste();
                         ejercito[ejercito.length-1] = sol;
                         ejercito = Arrays.copyOf(ejercito,ejercito.length+1);
+                        tablero.tablero[ejeFila][ejeColumna]=sol;
                         System.out.println("personaje insertado");
                     }else {
                         System.out.println("Elija entra la columna 6 o 7 ");
@@ -57,10 +58,11 @@ public class Ejercito {
                     ejeColumna = lector.nextInt();
 
                     if (ejeFila >= minFila && ejeFila <= maxFila && ejeColumna >= minColumna && ejeColumna <= maxColumna){
-                        Personaje cab = new Caballero(ejeFila,ejeColumna);
+                        Personaje cab = new Caballero();
                         sumacoste+=cab.getCoste();
                         ejercito[ejercito.length-1] = cab;
                         ejercito = Arrays.copyOf(ejercito,ejercito.length+1);
+                        tablero.tablero[ejeFila][ejeColumna]=cab;
                     }
                 break;
 
@@ -71,7 +73,7 @@ public class Ejercito {
                     ejeColumna = lector.nextInt();
 
                     if (ejeFila >= minFila && ejeFila <= maxFila && ejeColumna >= minColumna && ejeColumna <= maxColumna){
-                        Personaje arq = new Arquero(ejeFila,ejeColumna);
+                        Personaje arq = new Arquero();
                         sumacoste+=arq.getCoste();
                         ejercito[ejercito.length-1] = arq;
                         ejercito = Arrays.copyOf(ejercito,ejercito.length+1);
@@ -85,10 +87,11 @@ public class Ejercito {
                     ejeColumna = lector.nextInt();
 
                     if (ejeFila >= minFila && ejeFila <= maxFila && ejeColumna >= minColumna && ejeColumna <= maxColumna){
-                        Personaje lan = new Lancero(ejeFila,ejeColumna);
+                        Personaje lan = new Lancero();
                         sumacoste+=lan.getCoste();
                         ejercito[ejercito.length-1] = lan;
                         ejercito = Arrays.copyOf(ejercito,ejercito.length+1);
+
                     }
                 break;
 
@@ -98,5 +101,5 @@ public class Ejercito {
         }
         ejercito = Arrays.copyOf(ejercito,ejercito.length-1);
         return ejercito;
-}
+    }
 }

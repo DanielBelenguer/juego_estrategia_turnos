@@ -16,9 +16,10 @@ public class ProgramaPrincipal {
         tablero.mostrarTablero();
         System.out.println("Comienza el equipo azul creando su ejercito");
 
-        tablero.actualizarTablero(ejerAzul.crearEjercito("azul"));
+        ejerAzul.crearEjercito("azul", tablero);
+
         tablero.mostrarTablero();
-        int i=0,ii=7;
+
         ejerAzul.getPerso().mover(tablero.posicionesTablero());
         //tablero.actualizarTablero(ejerAzul.getPerso());
         tablero.mostrarTablero();
@@ -34,5 +35,7 @@ public class ProgramaPrincipal {
         tablero.mostrarTablero();*/
 
     }
+
+
 
 }

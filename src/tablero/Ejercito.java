@@ -63,6 +63,9 @@ public class Ejercito {
                         ejercito[ejercito.length-1] = cab;
                         ejercito = Arrays.copyOf(ejercito,ejercito.length+1);
                         tablero.tablero[ejeFila][ejeColumna]=cab;
+                        tablero.mostrarTablero();
+                        System.out.println("Personaje insertado....");
+
                     }
                 break;
 

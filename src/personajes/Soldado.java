@@ -1,12 +1,14 @@
 package personajes;
-import src.*;
 
 import java.awt.*;
 
 public class Soldado extends Personaje {
+    Color color;
 
     public Soldado() {
-        coste = 10;ataque = 10;defensa = 10;vida = 10;radio = 1;this.color=color;
+
+        coste=10;
+        this.color=color;
     }
     @Override
     public String toString () {
@@ -41,7 +43,9 @@ public class Soldado extends Personaje {
     public int getRadio(){
         return radio;
     }
-
+    public Color getColor() {
+        return color;
+    }
     @Override
     public  String getInfoPerso(){
         if (true){

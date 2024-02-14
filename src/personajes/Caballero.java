@@ -1,8 +1,10 @@
 package personajes;
 
+import java.awt.*;
+
 public class Caballero extends Personaje{
     public Caballero() {
-        coste = 25;ataque = 20;defensa = 20;vida = 25;radio = 2;
+        coste = 25;ataque = 20;defensa = 20;vida = 25;radio = 2;this.color=color;
     }
     @Override
     public String toString () {
@@ -28,6 +30,9 @@ public class Caballero extends Personaje{
     }
     public int getRadio(){
         return radio;
+    }
+    public Color getColor() {
+        return color;
     }
     @Override
     public  String getInfoPerso(){

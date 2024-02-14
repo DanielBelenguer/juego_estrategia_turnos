@@ -1,11 +1,11 @@
 package personajes;
 
+import java.awt.*;
+
 public class Lancero extends Personaje{
-    private boolean existePersonaje = false;
-
-
     public Lancero() {
-        coste = 5;ataque = 5;defensa = 5;vida = 10;radio = 2;
+        super();
+        coste = 5;ataque = 5;defensa = 5;vida = 10;radio = 2;this.color=color;
     }
     @Override
     public String toString () {
@@ -39,6 +39,9 @@ public class Lancero extends Personaje{
     }
     public int getRadio(){
         return radio;
+    }
+    public Color getColor() {
+        return color;
     }
 
     @Override

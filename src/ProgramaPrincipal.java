@@ -86,7 +86,7 @@ public class ProgramaPrincipal {
             ejeFila = lector.nextInt();
             System.out.println("Elija la columna donde desea colocarlo: ");
             ejeColumna = lector.nextInt();
-            sumacoste = sumacoste + crearEjercito(opt, color,ejeFila,ejeColumna,tablero);
+            sumacoste = sumacoste + crearEjercito(opt ,color ,ejeFila ,ejeColumna ,tablero);
             tablero.mostrarTablero();
         }
 

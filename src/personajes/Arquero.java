@@ -1,10 +1,10 @@
 package personajes;
 
-public class Arquero extends Personaje {
-    private boolean existePersonaje = false;
+import java.awt.*;
 
+public class Arquero extends Personaje {
     public Arquero() {
-        coste = 15; ataque = 10;defensa = 5;vida = 10;radio = 3;
+        coste = 15; ataque = 10;defensa = 5;vida = 10;radio = 3;this.color=color;
     }
     @Override
     public String toString () {
@@ -38,6 +38,9 @@ public class Arquero extends Personaje {
     }
     public int getRadio(){
         return radio;
+    }
+    public Color getColor(){
+        return color;
     }
     @Override
     public  String getInfoPerso(){

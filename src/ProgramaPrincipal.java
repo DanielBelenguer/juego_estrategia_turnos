@@ -1,12 +1,8 @@
 import personajes.*;
-
 import java.lang.*;
 import java.util.Scanner;
 
 public class ProgramaPrincipal {
-    public enum Color {
-        AZUL,ROJO
-    }
     static int crearEjercito (int opt, Color color,int ejeFila,int ejeColumna, Tablero tablero){
         //Variables
         int minFila=0,maxFila=7,minColumna=10,maxColumna=236;
@@ -21,7 +17,7 @@ public class ProgramaPrincipal {
             case 1:
                 //Comprobación de columna introducida es correcta
                 if (ejeFila >= minFila && ejeFila <= maxFila && ejeColumna >= minColumna && ejeColumna <= maxColumna){
-                    Personaje sol = new Soldado();
+                    Personaje sol = new Soldado(color);
                     tablero.setPersoTablero(ejeFila,ejeColumna,sol);
                     System.out.println("personaje insertado");
                     return sol.getCoste();
@@ -71,28 +67,62 @@ public class ProgramaPrincipal {
 
 
         //Variables
-        int opt,ejeFila,ejeColumna,sumacoste;
+        int opt,ejeFila,ejeColumna,sumacoste,vidaAzul=0,vidaRojo=0,turno=1;
+        boolean finjuego=true;
         Color color;
         //--------------------------
 
-        // Creacion ejercito AZUL
-        sumacoste=0;
-        while (sumacoste < 50){
-            System.out.println("Vamos a crear el ejercito Azul \n ¿Que quieres crear? \n 1 - Soldado\n 2 - Caballero\n 3 - Arquero\n 4 - Lancero");
-            opt = lector.nextInt();
-            color = Color.AZUL;
-            tablero.mostrarTablero();
-            System.out.println("Elija la fila donde quiera colocarlo: ");
-            ejeFila = lector.nextInt();
-            System.out.println("Elija la columna donde desea colocarlo: ");
-            ejeColumna = lector.nextInt();
-            sumacoste = sumacoste + crearEjercito(opt ,color ,ejeFila ,ejeColumna ,tablero);
-            tablero.mostrarTablero();
+        while (finjuego){
+            System.out.println(turno+" "+vidaAzul+" "+vidaRojo);
+            if (turno == 1){
+                sumacoste=0;
+                while (sumacoste < 50){
+                    System.out.println("Vamos a crear el ejercito Azul \n ¿Que quieres crear? \n 1 - Soldado\n 2 - Caballero\n 3 - Arquero\n 4 - Lancero");
+                    opt = lector.nextInt();
+                    color = Color.AZUL;
+                    tablero.mostrarTablero();
+                    System.out.println("Elija la fila donde quiera colocarlo: ");
+                    ejeFila = lector.nextInt();
+                    System.out.println("Elija la columna donde desea colocarlo: ");
+                    ejeColumna = lector.nextInt();
+                    sumacoste = sumacoste + crearEjercito(opt ,color ,ejeFila ,ejeColumna ,tablero);
+                    vidaAzul +=1;
+                    tablero.mostrarTablero();
+                }
+                turno+=1;
+            } else if (turno == 2) {
+                sumacoste=0;
+                while (sumacoste < 50){
+                    System.out.println("Vamos a crear el ejercito Rojo \n ¿Que quieres crear? \n 1 - Soldado\n 2 - Caballero\n 3 - Arquero\n 4 - Lancero");
+                    opt = lector.nextInt();
+                    color = Color.ROJO;
+                    tablero.mostrarTablero();
+                    System.out.println("Elija la fila donde quiera colocarlo: ");
+                    ejeFila = lector.nextInt();
+                    System.out.println("Elija la columna donde desea colocarlo: ");
+                    ejeColumna = lector.nextInt();
+                    sumacoste = sumacoste + crearEjercito(opt ,color ,ejeFila ,ejeColumna ,tablero);
+                    vidaRojo +=1;
+                    tablero.mostrarTablero();
+                }
+                turno+=1;
+            }else {
+                if (turno % 2 != 0){
+                    //Turno AZUL
+                    //
+                    //Compro vidas contrario ROJO
+                    //Cambiar booleano
+                    finjuego=false;
+                }else {
+                    // Turno ROJO
+                    //
+                    // Compro vidas AZUL
+                    //Cambiar booleano
+                }
+            }
         }
 
-        int i= lector.nextInt();
-        int ii= lector.nextInt();
-        tablero.posicionesTablero();
+
 
 
 

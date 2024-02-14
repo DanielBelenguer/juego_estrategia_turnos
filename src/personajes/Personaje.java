@@ -1,11 +1,12 @@
 package personajes;
 
-import tablero.Tablero;
+import java.awt.*;
 
 public abstract class Personaje {
     protected int coste, ataque, defensa, vida, radio;
+    Color color;
 
-    protected Personaje (){}
+    Personaje (){}
 
     abstract public int getCoste();
     abstract public int getAtaque();
@@ -14,9 +15,6 @@ public abstract class Personaje {
     abstract public int setVida(int restaAtaque);
     abstract public int getRadio();
     abstract public String getInfoPerso();
-    public abstract void atacar (Tablero tablero);
-    public abstract void mover (Personaje[][] posiciones);
-    public abstract void curar ();
     public abstract String toString ();
 
 }

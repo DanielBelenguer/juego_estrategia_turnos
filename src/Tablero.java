@@ -1,5 +1,3 @@
-package tablero;
-
 import personajes.*;
 
 
@@ -26,27 +24,9 @@ public class Tablero {
             System.out.println("|");
         }
     }
-
-    public void actualizarTablero(){
-
-
-
-        /*for(int i=0;i<ejercito.length;i++){
-            int x = ;
-            int y = ;
-            this.tablero[x][y] = ejercito[i];
-        }*/
-
+    public void setPersoTablero (int ejeFila,int ejeColumn, Personaje perso){
+        tablero[ejeFila][ejeColumn] = perso;
     }
-
-
-
-
-    //Mirar si se puede borrar
-    /*public Personaje setPosicionTablero (Personaje pers){
-        tablero[pers.getEjeFila()][pers.getEjeColumna()] = pers;
-        return pers;
-    }*/
     public Personaje[][] posicionesTablero(){
         return this.tablero;
 }

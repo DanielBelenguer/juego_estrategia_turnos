@@ -3,8 +3,9 @@ package personajes;
 import java.awt.*;
 
 public class Caballero extends Personaje{
-    public Caballero() {
-        coste = 25;ataque = 20;defensa = 20;vida = 25;radio = 2;this.color=color;
+    Color color;
+    public Caballero(Color color) {
+        coste = 25;ataque = 20;defensa = 20;vida = 25;radio = 2;vidaMaxima=25;this.color=color;
     }
     @Override
     public String toString () {
@@ -15,18 +16,20 @@ public class Caballero extends Personaje{
     public int getDefensa(){ return defensa; }
     public int getVida(){ return vida; }
     @Override
-    public int setVida(int restaAtaque) {
+    public void setVida(int restaAtaque) {
         if (restaAtaque <= 0){
             System.out.println("La fuerza del ataque fue demasiado baja y falla el ataque " + restaAtaque);
         }else {
-            if (vida >= restaAtaque){
-                System.out.println("Un ataque muy efectivo, le quita " + restaAtaque);
-                return this.vida-=restaAtaque;
-            }else {
-                return 0;
-            }
+            System.out.println("Un ataque muy efectivo, le quita " + restaAtaque);
+            this.vida-=restaAtaque;
         }
-        return 0;
+    }
+    public void setCura (int curacion){
+        if ((curacion+vida) > vidaMaxima ){
+            vida = vidaMaxima;
+        }else {
+            vida +=curacion;
+        }
     }
     public int getRadio(){
         return radio;
@@ -34,6 +37,7 @@ public class Caballero extends Personaje{
     public Color getColor() {
         return color;
     }
+    public int getVidaMaxima(){return vidaMaxima;}
     @Override
     public  String getInfoPerso(){
         return "C" + "(" + vida + ")";

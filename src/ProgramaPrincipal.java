@@ -5,9 +5,7 @@ import java.util.Scanner;
 public class ProgramaPrincipal {
 
     /*
-    * Tenemos que limitar el rango de ataque
-    * Implementar colores en el mapa
-    * Revisar línea 188 y 288
+    * El resultado de las acciones realizadas se indicará por pantalla.
     * Realizar pruebas generales
     * Revisar SYSOS (Formatearlo correctamente)
     * Añadir enter para continuar (Donde se necesite)
@@ -71,11 +69,15 @@ public class ProgramaPrincipal {
         }
         return 0;
     }
-
+    static void enterContinuar () {
+            Scanner lector = new Scanner(System.in);
+            System.out.println();
+            System.out.println("Presiona ENTER para continuar...");
+            lector.nextLine();
+        }
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         Tablero tablero = new Tablero();
-
 
         //Variables
         int opt,ejeFila,ejeColumna,sumacoste,vidaAzul=0,vidaRojo=0,turno=1;
@@ -84,11 +86,14 @@ public class ProgramaPrincipal {
         //--------------------------
 
         while (finjuego){
-            System.out.println(turno+" "+vidaAzul+" "+vidaRojo);
+            System.out.println("TURNO ACTUAL: "+turno+"\n"+"VIDA EQUIPO "+Personaje.BLUE+"AZUL: "+Personaje.RESET_COLOR+vidaAzul+"\n"+"VIDA EQUIPO "+Personaje.RED+"ROJO "+Personaje.RESET_COLOR+vidaRojo);
+
+            enterContinuar();
+
             if (turno == 1){
                 sumacoste=0;
                 while (sumacoste < 50){
-                    System.out.println("Vamos a crear el ejercito Azul \n ¿Que quieres crear? \n 1 - Soldado\n 2 - Caballero\n 3 - Arquero\n 4 - Lancero");
+                    System.out.println("Vamos a crear el ejercito "+Personaje.BLUE+"Azul "+Personaje.RESET_COLOR+"\nTienes un total de 50 puntos para gastar. \n¿Que quieres crear? \n 1 - Soldado (10)\n 2 - Caballero (25)\n 3 - Arquero (15)\n 4 - Lancero (5)");
                     opt = lector.nextInt();
                     if (opt >= 1 && opt <= 4) {
                         color = Color.AZUL;
@@ -102,6 +107,8 @@ public class ProgramaPrincipal {
                             vidaAzul +=1;
                         }
                         tablero.mostrarTablero();
+                        System.out.println("Llevas gastado "+sumacoste+" de un total de 50 puntos.");
+                        enterContinuar();
                     }else {
                         System.out.println("Número no válido 1-4");
                     }
@@ -110,7 +117,7 @@ public class ProgramaPrincipal {
             } else if (turno == 2) {
                 sumacoste=0;
                 while (sumacoste < 50){
-                    System.out.println("Vamos a crear el ejercito Rojo \n ¿Que quieres crear? \n 1 - Soldado\n 2 - Caballero\n 3 - Arquero\n 4 - Lancero");
+                    System.out.println("Vamos a crear el ejercito "+Personaje.RED+"Rojo "+Personaje.RESET_COLOR+"\n Tienes un total de 50 puntos para gastar \n¿Que quieres crear? \n 1 - Soldado (10)\n 2 - Caballero (25)\n 3 - Arquero (15)\n 4 - Lancero (5)");
                     opt = lector.nextInt();
                     color = Color.ROJO;
                     tablero.mostrarTablero();
@@ -123,14 +130,16 @@ public class ProgramaPrincipal {
                         vidaRojo +=1;
                     }
                     tablero.mostrarTablero();
+                    System.out.println("Llevas gastado "+sumacoste+" de un total de 50 puntos.");
+                    enterContinuar();
                 }
                 turno+=1;
             }else {
                 if (turno % 2 != 0){
                     //Turno AZUL
-                    System.out.println("Turno de equipo Azul\n Elija una accion: \n 1 - Mover \n 2 - Atacar \n 3 - Curar \n ----------------------------");
+                    System.out.println("Turno de equipo "+Personaje.BLUE+"Azul"+Personaje.RESET_COLOR+"\n Elija una acción: \n 1 - Mover \n 2 - Atacar \n 3 - Curar \n ----------------------------");
                     opt = lector.nextInt();
-                    System.out.println("Que personaje quiere realizar la accion: ");
+                    System.out.println("Que personaje quiere realizar la acción: ");
                     switch (opt) {
                         case 1:
                             tablero.mostrarTablero();
@@ -138,9 +147,10 @@ public class ProgramaPrincipal {
                             int filaOrigen = lector.nextInt();
                             System.out.println("Ahora indique la columna: ");
                             int columnaOrigen = lector.nextInt();
-                            if (tablero.tablero[filaOrigen][columnaOrigen].getColor().equals(Color.AZUL)){
-                                boolean existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
-                                if (existePersonaje) {
+
+                            boolean existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
+                            if (existePersonaje) {
+                                if (tablero.tablero[filaOrigen][columnaOrigen].getColor().equals(Color.AZUL)) {
                                     System.out.println("Indique las nuevas coordenadas del personaje, introduce fila");
                                     int filaNueva = lector.nextInt();
                                     System.out.println("Ahora indique la columna");
@@ -148,29 +158,31 @@ public class ProgramaPrincipal {
                                     if (filaNueva >= 0 && filaNueva <= 7 && columnaNueva >= 0 && columnaNueva <= 7){
                                         if (tablero.tablero[filaNueva][columnaNueva] == null){
                                             tablero.mover(filaOrigen,columnaOrigen,filaNueva,columnaNueva);
+                                            System.out.println("El personaje se ha movido de forma exitosa");
                                             turno +=1;
                                         }else {
                                             System.out.println("No se puede realizar el movimiento, esa casilla está ocupada");
                                         }
                                     }else {
-                                        System.out.println("Casilla elegida fuera de rango");
+                                        System.out.println("Casilla elegida fuera del tablero");
                                     }
-                                }else {
-                                    System.out.println("En esta casilla no existe ningún personaje");
+                                }else{
+                                    System.out.println("Elegiste un personaje contrario");
                                 }
-                            }else{
-                                System.out.println("Elegiste un personaje contrario");
+
+                            }else {
+                                System.out.println("En esta casilla no existe ningún personaje");
                             }
                             tablero.mostrarTablero();
                             break;
                         case 2:
                             tablero.mostrarTablero();
-                            int atacaFila, atacaColumna, randomDefensa,randomAtaque, resultAtaque;
+                            int atacaFila, atacaColumna;
                             System.out.println("Indique las coordenadas del personaje que va a atacar\nintroduce la fila: ");
                             filaOrigen = lector.nextInt();
                             System.out.println("Ahora indique la columna: ");
                             columnaOrigen = lector.nextInt();
-                            boolean existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
+                             existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
                             if (existePersonaje) {
                                 if (tablero.tablero[filaOrigen][columnaOrigen].getColor().equals(Color.AZUL)){
                                     System.out.println("A que personaje quieres atacar");
@@ -181,13 +193,19 @@ public class ProgramaPrincipal {
                                     existePersonaje = tablero.buscaPerso(atacaFila,atacaColumna);
                                     if (existePersonaje){
                                         if (tablero.tablero[atacaFila][atacaColumna].getColor().equals(Color.ROJO)){
-                                            tablero.atacar(filaOrigen,columnaOrigen,atacaFila,atacaColumna);
+                                            //Vamos a comprobar que el rango sea válido tanto en las columnas como las filas
+                                            if (tablero.compruebaRangoColumna(columnaOrigen, atacaColumna) <= tablero.tablero[filaOrigen][columnaOrigen].getRadio() && tablero.compruebaRangoFila(filaOrigen,atacaFila) <= tablero.tablero[filaOrigen][columnaOrigen].getRadio()) {
+                                                tablero.atacar(filaOrigen,columnaOrigen,atacaFila,atacaColumna);
+                                                System.out.println("El personaje ha realizado su ataque");
+                                                turno +=1;
+                                            }else {
+                                                System.out.println("No estás en rango de ataque, asegúrese de estarlo");
+                                            }
                                             if (tablero.tablero[atacaFila][atacaColumna].getVida() <= 0){
                                                 tablero.tablero[atacaFila][atacaColumna] = null;
                                                 vidaRojo-=1;
                                             }
-                                            //System.out.println("El resultado de ataque es \n"+ tablero.tablero[atacaFila][atacaColumna].getInfoPerso());
-                                            turno +=1;
+
                                         }else {
                                             System.out.println("No puedes atacar a tu equipo Ratón!!!");
                                         }
@@ -211,6 +229,7 @@ public class ProgramaPrincipal {
                             if (existePersonaje) {
                                 if (tablero.tablero[filaCura][columnaCura].getColor().equals(Color.AZUL)){
                                     tablero.curar(filaCura,columnaCura);
+                                    System.out.println("El personaje ha realizado la curación");
                                     turno+=1;
                                 }else {
                                     System.out.println("El personaje elegido no es de tu equipo");
@@ -227,7 +246,7 @@ public class ProgramaPrincipal {
                     }
                 }else {
                     // Turno ROJO
-                    System.out.println("Turno de equipo Rojo\n Elija una acción: \n 1 - Mover \n 2 - Atacar \n 3 - Curar \n ----------------------------");
+                    System.out.println("Turno de equipo "+Personaje.RED+"Rojo"+Personaje.RESET_COLOR+"\n Elija una acción: \n 1 - Mover \n 2 - Atacar \n 3 - Curar \n ----------------------------");
                     opt = lector.nextInt();
                     System.out.println("Que personaje quiere realizar la acción: ");
                     switch (opt) {
@@ -237,29 +256,32 @@ public class ProgramaPrincipal {
                             int filaOrigen = lector.nextInt();
                             System.out.println("Ahora indique la columna: ");
                             int columnaOrigen = lector.nextInt();
-                            if (tablero.tablero[filaOrigen][columnaOrigen].getColor().equals(Color.ROJO)){
+
                                 boolean existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
                                 if (existePersonaje) {
-                                    System.out.println("Indique las nuevas coordenadas del personaje, introduce fila");
-                                    int filaNueva = lector.nextInt();
-                                    System.out.println("Ahora indique la columna");
-                                    int columnaNueva = lector.nextInt();
-                                    if (filaNueva >= 0 && filaNueva <= 7 && columnaNueva >= 0 && columnaNueva <= 7){
-                                        if (tablero.tablero[filaNueva][columnaNueva] == null){
-                                            tablero.mover(filaOrigen,columnaOrigen,filaNueva,columnaNueva);
-                                            turno +=1;
+                                    if (tablero.tablero[filaOrigen][columnaOrigen].getColor().equals(Color.ROJO)) {
+                                        System.out.println("Indique las nuevas coordenadas del personaje, introduce fila");
+                                        int filaNueva = lector.nextInt();
+                                        System.out.println("Ahora indique la columna");
+                                        int columnaNueva = lector.nextInt();
+                                        if (filaNueva >= 0 && filaNueva <= 7 && columnaNueva >= 0 && columnaNueva <= 7){
+                                            if (tablero.tablero[filaNueva][columnaNueva] == null){
+                                                tablero.mover(filaOrigen,columnaOrigen,filaNueva,columnaNueva);
+                                                System.out.println("El personaje se ha movido de forma exitosa");
+                                                turno +=1;
+                                            }else {
+                                                System.out.println("No se puede realizar el movimiento, esa casilla está ocupada");
+                                            }
                                         }else {
-                                            System.out.println("No se puede realizar el movimiento, esa casilla está ocupada");
+                                            System.out.println("Casilla elegida fuera del tablero");
                                         }
-                                    }else {
-                                        System.out.println("Casilla elegida fuera de rango");
+                                    }else{
+                                        System.out.println("Elegiste un personaje contrario");
                                     }
+
                                 }else {
                                     System.out.println("En esta casilla no existe ningún personaje");
                                 }
-                            }else{
-                                System.out.println("Elegiste un personaje contrario");
-                            }
                             tablero.mostrarTablero();
                             break;
                         case 2:
@@ -269,7 +291,7 @@ public class ProgramaPrincipal {
                             filaOrigen = lector.nextInt();
                             System.out.println("Ahora indique la columna: ");
                             columnaOrigen = lector.nextInt();
-                            boolean existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
+                             existePersonaje = tablero.buscaPerso(filaOrigen,columnaOrigen);
                             if (existePersonaje) {
                                 if (tablero.tablero[filaOrigen][columnaOrigen].getColor().equals(Color.ROJO)){
                                     System.out.println("A que personaje quieres atacar");
@@ -280,12 +302,17 @@ public class ProgramaPrincipal {
                                     existePersonaje = tablero.buscaPerso(atacaFila,atacaColumna);
                                     if (existePersonaje){
                                         if (tablero.tablero[atacaFila][atacaColumna].getColor().equals(Color.AZUL)){
-                                            tablero.atacar(filaOrigen,columnaOrigen,atacaFila,atacaColumna);
+                                            if (tablero.compruebaRangoColumna(columnaOrigen, atacaColumna) <= tablero.tablero[filaOrigen][columnaOrigen].getRadio() && tablero.compruebaRangoFila(filaOrigen,atacaFila) <= tablero.tablero[filaOrigen][columnaOrigen].getRadio()) {
+                                                tablero.atacar(filaOrigen,columnaOrigen,atacaFila,atacaColumna);
+                                                System.out.println("El personaje ha realizado su ataque");
+                                                turno +=1;
+                                            }else {
+                                                System.out.println("No estás en rango de ataque, asegúrese de estarlo");
+                                            }
                                             if (tablero.tablero[atacaFila][atacaColumna].getVida() <= 0){
                                                 tablero.tablero[atacaFila][atacaColumna] = null;
                                                 vidaAzul-=1;
                                             }
-                                            //System.out.println("El resultado de ataque es \n"+ tablero.tablero[atacaFila][atacaColumna].getInfoPerso());
                                             turno +=1;
                                         }else {
                                             System.out.println("No puedes atacar a tu equipo Ratón!!!");
@@ -310,6 +337,7 @@ public class ProgramaPrincipal {
                             if (existePersonaje) {
                                 if (tablero.tablero[filaCura][columnaCura].getColor().equals(Color.ROJO)){
                                     tablero.curar(filaCura,columnaCura);
+                                    System.out.println("El personaje ha realizado la curación");
                                     turno+=1;
                                 }else {
                                     System.out.println("El personaje elegido no es de tu equipo");

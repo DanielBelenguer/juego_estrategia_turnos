@@ -39,8 +39,19 @@ public class Arquero extends Personaje {
     }
     public int getVidaMaxima(){return vidaMaxima;}
     @Override
-    public  String getInfoPerso(){
-        return "A" + "(" + vida + ")";
+    public  String getInfoPerso() {
+        if (color.equals(Color.AZUL)) {
+
+            if (vida < 10)
+                return BLUE+"C" + "(" + " " + vida + ")" + RESET_COLOR;
+            else
+                return BLUE+"C" + "(" + vida + ")"+RESET_COLOR;
+        }else {
+            if (vida < 10)
+                return RED+"C" + "(" + " " + vida + ")" +RESET_COLOR;
+            else
+                return RED+"C" + "(" + vida + ")"+RESET_COLOR;
+        }
     }
 
 }

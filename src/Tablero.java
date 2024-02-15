@@ -63,5 +63,14 @@ public class Tablero {
             tablero[filaOrigen][columnaOrigen].setCura(curacion);
         System.out.println("Tu personaje se curo " + curacion + "\n Ahora tiene un total de vida: " + tablero[filaOrigen][columnaOrigen].getVida());
     }
+    public int compruebaRangoColumna ( int columnaOrigen, int columnaAtaque ){
 
+        int rangoColmuna = columnaAtaque - columnaOrigen;
+        return rangoColmuna;
+    }
+    public int compruebaRangoFila( int filaOrigen, int filaAtaque ){
+
+        int rangoFila = filaAtaque - filaOrigen;
+        return rangoFila;
+    }
 }

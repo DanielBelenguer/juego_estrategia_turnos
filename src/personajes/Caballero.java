@@ -3,9 +3,10 @@ package personajes;
 import java.awt.*;
 
 public class Caballero extends Personaje{
+
     Color color;
     public Caballero(Color color) {
-        coste = 25;ataque = 20;defensa = 20;vida = 25;radio = 2;vidaMaxima=25;this.color=color;
+        coste = 25;ataque = 15;defensa = 20;vida = 25;radio = 2;vidaMaxima=25;this.color=color;
     }
     @Override
     public String toString () {
@@ -39,8 +40,19 @@ public class Caballero extends Personaje{
     }
     public int getVidaMaxima(){return vidaMaxima;}
     @Override
-    public  String getInfoPerso(){
-        return "C" + "(" + vida + ")";
+    public  String getInfoPerso() {
+        if (color.equals(Color.AZUL)) {
+
+            if (vida < 10)
+                return BLUE+"C" + "(" + " " + vida + ")" + RESET_COLOR;
+            else
+                return BLUE+"C" + "(" + vida + ")"+RESET_COLOR;
+        }else {
+            if (vida < 10)
+                return RED+"C" + "(" + " " + vida + ")" +RESET_COLOR;
+            else
+                return RED+"C" + "(" + vida + ")"+RESET_COLOR;
+        }
     }
 
 }

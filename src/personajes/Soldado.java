@@ -42,14 +42,14 @@ public class Soldado extends Personaje {
         if (color.equals(Color.AZUL)) {
 
             if (vida < 10)
-                return BLUE+"C" + "(" + " " + vida + ")" + RESET_COLOR;
+                return BLUE+"S" + "(" + " " + vida + ")" + RESET_COLOR;
             else
-                return BLUE+"C" + "(" + vida + ")"+RESET_COLOR;
+                return BLUE+"S" + "(" + vida + ")"+RESET_COLOR;
         }else {
             if (vida < 10)
-                return RED+"C" + "(" + " " + vida + ")" +RESET_COLOR;
+                return RED+"S" + "(" + " " + vida + ")" +RESET_COLOR;
             else
-                return RED+"C" + "(" + vida + ")"+RESET_COLOR;
+                return RED+"S" + "(" + vida + ")"+RESET_COLOR;
         }
     }
 }

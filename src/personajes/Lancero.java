@@ -44,14 +44,14 @@ public class Lancero extends Personaje{
         if (color.equals(Color.AZUL)) {
 
             if (vida < 10)
-                return BLUE+"C" + "(" + " " + vida + ")" + RESET_COLOR;
+                return BLUE+"L" + "(" + " " + vida + ")" + RESET_COLOR;
             else
-                return BLUE+"C" + "(" + vida + ")"+RESET_COLOR;
+                return BLUE+"L" + "(" + vida + ")"+RESET_COLOR;
         }else {
             if (vida < 10)
-                return RED+"C" + "(" + " " + vida + ")" +RESET_COLOR;
+                return RED+"L" + "(" + " " + vida + ")" +RESET_COLOR;
             else
-                return RED+"C" + "(" + vida + ")"+RESET_COLOR;
+                return RED+"L" + "(" + vida + ")"+RESET_COLOR;
         }
     }
 }

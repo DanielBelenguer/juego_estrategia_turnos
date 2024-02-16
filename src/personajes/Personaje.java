@@ -2,14 +2,13 @@ package personajes;
 
 import java.awt.*;
 public abstract class Personaje {
-    //C O L O R E S
+    /**
+     * Declaramos Constantes para colorear los textos en nuestro programa
+     * Colores (Red,Blue)
+     * */
     public static final String RED = "\u001B[31m";
-
     public static final String BLUE = "\u001B[34m";
-
     public static final String RESET_COLOR = "\u001B[0m";
-
-    //------------------------------------------------------------------------------
     protected int coste, ataque, defensa, vida, radio,vidaMaxima;
     protected Color color;
     public Personaje (){}
@@ -24,5 +23,4 @@ public abstract class Personaje {
     abstract public int getVidaMaxima();
     abstract public String getInfoPerso();
     public abstract String toString ();
-
 }

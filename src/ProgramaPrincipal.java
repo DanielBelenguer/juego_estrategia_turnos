@@ -3,13 +3,15 @@ import java.lang.*;
 import java.util.Scanner;
 
 public class ProgramaPrincipal {
-
-    /*
-     * El resultado de las acciones realizadas se indicará por pantalla.
-     * Realizar pruebas generales
-     * Revisar SYSOS (Formatearlo correctamente)
-     * Añadir enter para continuar (Donde se necesite)
-     * Revisar ortografía*/
+    /**
+     * Método para crear un Ejército
+     * @param opt Para elegir qué personaje quieres crear.
+     * @param color Para guardar el color de cada personaje.
+     * @param ejeFila Este número es para poder situar en el tablero el personaje.
+     * @param ejeColumna Este número es para situar en el tablero el personaje.
+     * @param tablero Pasamos el tablero para poder manejarlo desde este método.
+     * @return Lo utilizamos para poder sumar el coste del personaje que creamos.
+     * */
     static int crearEjercito (int opt, Color color,int ejeFila,int ejeColumna, Tablero tablero){
         //Variables
         int minFila=0,maxFila=7,minColumna=10,maxColumna=236;
@@ -67,6 +69,9 @@ public class ProgramaPrincipal {
         }
         return 0;
     }
+    /**
+     * Función para parar el programa.
+     * */
     static void enterContinuar () {
         Scanner lector = new Scanner(System.in);
         System.out.println();

@@ -4,6 +4,10 @@ import java.awt.*;
 
 public class Lancero extends Personaje{
     Color color;
+    /**
+     * Constructor de la clase Lancero, tiene atributos solo para esta clase (coste,ataque,defensa,vida,radio,vidaMaxima).
+     * @param color Trae el Color para guardarlo.
+     * */
     public Lancero(Color color) {
         super();
         coste = 5;ataque = 5;defensa = 5;vida = 10;radio = 2;vidaMaxima=10;this.color=color;
@@ -16,6 +20,10 @@ public class Lancero extends Personaje{
     public int getAtaque(){ return ataque; }
     public int getDefensa(){ return defensa; }
     public int getVida(){ return vida; }
+    /**
+     * Funcion para setear la vida del personaje
+     * @param restaAtaque Esta es para poder restar la vida del personaje.
+     * */
     @Override
     public void setVida(int restaAtaque) {
         if (restaAtaque <= 0){
@@ -25,6 +33,10 @@ public class Lancero extends Personaje{
             this.vida-=restaAtaque;
         }
     }
+    /**
+     * Método para curar el personaje
+     * @param curacion Número entero para curar el personaje.
+     * */
     public void setCura (int curacion){
         if ((curacion+vida) > vidaMaxima ){
             vida = vidaMaxima;
@@ -39,6 +51,11 @@ public class Lancero extends Personaje{
         return color;
     }
     public int getVidaMaxima(){return vidaMaxima;}
+    /**
+     * Metodo para mostrar en el tablero el personaje y la vida
+     * @return Retornamos un String para mostrar en el tablero.
+     * Utilizamos constantes BLUE y RED para pintar de color en el tablero.
+     * */
     @Override
     public  String getInfoPerso() {
         if (color.equals(Color.AZUL)) {
